@@ -9,6 +9,7 @@ offset_bottom = 215.0
 focus_mode = 2
 theme_override_constants/line_separation = 6
 theme_override_fonts/normal_font = ExtResource("1_k52xw")
+theme_override_font_sizes/normal_font_size = 8
 scroll_following = true
 selection_enabled = true
 script = ExtResource("1_xxmom")

@@ -14,4 +14,4 @@ dest_files=["res://.godot/imported/fixed8.fnt-ee2f82280db168bd511d63144afcc915.f
 
 fallbacks=[]
 compress=true
-scaling_mode=2
+scaling_mode=1
