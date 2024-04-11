@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn601pvvdve6d"]
+
+[ext_resource type="FontFile" uid="uid://dk7jv0qi6my1v" path="res://fixed8.fnt" id="1_k52xw"]
+[ext_resource type="Script" path="res://midi_log.gd" id="1_xxmom"]
+
+[node name="MidiLog" type="RichTextLabel"]
+offset_right = 212.0
+offset_bottom = 215.0
+focus_mode = 2
+theme_override_constants/line_separation = 6
+theme_override_fonts/normal_font = ExtResource("1_k52xw")
+scroll_following = true
+selection_enabled = true
+script = ExtResource("1_xxmom")

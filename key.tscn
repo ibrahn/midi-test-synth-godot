@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://0v3pghhk8805"]
+
+[ext_resource type="Script" path="res://key.gd" id="1_vqlab"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sos6s"]
+bg_color = Color(0.758342, 0.703817, 0.444613, 1)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.696722, 0.262517, 0.0590774, 1)
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rc2v3"]
+bg_color = Color(0.492381, 0.705845, 0.495731, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqpbu"]
+bg_color = Color(0.758342, 0.703817, 0.444613, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4c627"]
+bg_color = Color(0.396989, 0.698178, 0.735122, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rs4yc"]
+bg_color = Color(0.74715, 0.721169, 0.731137, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_11grw"]
+
+[node name="Key" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxFlat_sos6s")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_rc2v3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_eqpbu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4c627")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rs4yc")
+toggle_mode = true
+action_mode = 0
+script = ExtResource("1_vqlab")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamGenerator_11grw")
+
+[node name="ReleaseTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="toggled" from="." to="." method="_on_toggled"]
+[connection signal="timeout" from="ReleaseTimer" to="." method="_on_release_timer_timeout"]

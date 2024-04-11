@@ -1,0 +1,101 @@
+[gd_scene load_steps=3 format=3 uid="uid://jjtrko3okwqs"]
+
+[ext_resource type="PackedScene" uid="uid://0v3pghhk8805" path="res://key.tscn" id="1_58k02"]
+[ext_resource type="Script" path="res://octave.gd" id="1_abf6a"]
+
+[node name="Octave" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_abf6a")
+
+[node name="White" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Key00" parent="White" instance=ExtResource("1_58k02")]
+layout_mode = 2
+
+[node name="Key02" parent="White" instance=ExtResource("1_58k02")]
+auto_translate_mode = 1
+layout_mode = 2
+
+[node name="Key04" parent="White" instance=ExtResource("1_58k02")]
+auto_translate_mode = 1
+layout_mode = 2
+
+[node name="Key05" parent="White" instance=ExtResource("1_58k02")]
+auto_translate_mode = 1
+layout_mode = 2
+
+[node name="Key07" parent="White" instance=ExtResource("1_58k02")]
+auto_translate_mode = 1
+layout_mode = 2
+
+[node name="Key09" parent="White" instance=ExtResource("1_58k02")]
+auto_translate_mode = 1
+layout_mode = 2
+
+[node name="Key11" parent="White" instance=ExtResource("1_58k02")]
+auto_translate_mode = 1
+layout_mode = 2
+
+[node name="Black" type="Control" parent="."]
+modulate = Color(0.60933, 0.60933, 0.60933, 1)
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.7
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Key01" parent="Black" instance=ExtResource("1_58k02")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.095
+anchor_right = 0.183
+grow_horizontal = 1
+
+[node name="Key03" parent="Black" instance=ExtResource("1_58k02")]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.241319
+anchor_right = 0.329319
+grow_horizontal = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Key06" parent="Black" instance=ExtResource("1_58k02")]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.52691
+anchor_right = 0.61491
+grow_horizontal = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Key08" parent="Black" instance=ExtResource("1_58k02")]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.671875
+anchor_right = 0.759875
+grow_horizontal = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Key10" parent="Black" instance=ExtResource("1_58k02")]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.815104
+anchor_right = 0.903104
+grow_horizontal = 1
+metadata/_edit_use_anchors_ = true

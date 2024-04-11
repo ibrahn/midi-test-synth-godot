@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://b75chtuqwcpto"]
+
+[ext_resource type="Script" path="res://c_control.gd" id="1_j7nec"]
+[ext_resource type="FontFile" uid="uid://dk7jv0qi6my1v" path="res://fixed8.fnt" id="1_m38fg"]
+
+[node name="CControl" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j7nec")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.707967, 0.707967, 0.707967, 1)
+theme_override_fonts/font = ExtResource("1_m38fg")
+text = "Filter Cutoff"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 127.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.707967, 0.707967, 0.707967, 1)
+theme_override_fonts/font = ExtResource("1_m38fg")
+text = "CC:"
+
+[node name="CCNumber" type="SpinBox" parent="HBoxContainer"]
+layout_mode = 2
+max_value = 127.0
+value = 1.0
+
+[connection signal="value_changed" from="HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/CCNumber" to="." method="_on_cc_number_value_changed"]

@@ -1,0 +1,137 @@
+[gd_scene load_steps=7 format=3 uid="uid://2xy32iu4rngm"]
+
+[ext_resource type="Script" path="res://main_screen.gd" id="1_n50et"]
+[ext_resource type="PackedScene" uid="uid://cn601pvvdve6d" path="res://midi_log.tscn" id="1_yldjk"]
+[ext_resource type="PackedScene" uid="uid://b75chtuqwcpto" path="res://c_control.tscn" id="2_17s1p"]
+[ext_resource type="FontFile" uid="uid://dk7jv0qi6my1v" path="res://fixed8.fnt" id="3_6hxp1"]
+[ext_resource type="PackedScene" uid="uid://jjtrko3okwqs" path="res://octave.tscn" id="3_q7cxg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kop3p"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[node name="MainScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n50et")
+
+[node name="VSplitContainer" type="VSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VSplitContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_kop3p")
+
+[node name="CC" type="VBoxContainer" parent="VSplitContainer/HSplitContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Volume" parent="VSplitContainer/HSplitContainer/PanelContainer/CC" instance=ExtResource("2_17s1p")]
+layout_mode = 2
+
+[node name="Title" parent="VSplitContainer/HSplitContainer/PanelContainer/CC/Volume" index="0"]
+text = "Volume
+"
+
+[node name="CCNumber" parent="VSplitContainer/HSplitContainer/PanelContainer/CC/Volume/HBoxContainer" index="2"]
+value = 7.0
+
+[node name="Chorus" parent="VSplitContainer/HSplitContainer/PanelContainer/CC" instance=ExtResource("2_17s1p")]
+layout_mode = 2
+
+[node name="Title" parent="VSplitContainer/HSplitContainer/PanelContainer/CC/Chorus" index="0"]
+text = "Chorus"
+
+[node name="CCNumber" parent="VSplitContainer/HSplitContainer/PanelContainer/CC/Chorus/HBoxContainer" index="2"]
+value = 16.0
+
+[node name="Cutoff" parent="VSplitContainer/HSplitContainer/PanelContainer/CC" instance=ExtResource("2_17s1p")]
+auto_translate_mode = 1
+layout_mode = 2
+
+[node name="Reverb" parent="VSplitContainer/HSplitContainer/PanelContainer/CC" instance=ExtResource("2_17s1p")]
+auto_translate_mode = 1
+layout_mode = 2
+
+[node name="Title" parent="VSplitContainer/HSplitContainer/PanelContainer/CC/Reverb" index="0"]
+text = "Reverb"
+
+[node name="CCNumber" parent="VSplitContainer/HSplitContainer/PanelContainer/CC/Reverb/HBoxContainer" index="2"]
+value = 17.0
+
+[node name="LogPanel" type="PanelContainer" parent="VSplitContainer/HSplitContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer/HSplitContainer/LogPanel"]
+layout_mode = 2
+
+[node name="LogToggle" type="CheckButton" parent="VSplitContainer/HSplitContainer/LogPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6hxp1")
+button_pressed = true
+text = "Logging: "
+alignment = 2
+
+[node name="MidiLog" parent="VSplitContainer/HSplitContainer/LogPanel/VBoxContainer" instance=ExtResource("1_yldjk")]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="Octave0" parent="VSplitContainer/HBoxContainer" instance=ExtResource("3_q7cxg")]
+layout_mode = 2
+base_note_num = 36
+
+[node name="Octave1" parent="VSplitContainer/HBoxContainer" instance=ExtResource("3_q7cxg")]
+auto_translate_mode = 1
+layout_mode = 2
+base_note_num = 48
+
+[node name="Octave2" parent="VSplitContainer/HBoxContainer" instance=ExtResource("3_q7cxg")]
+auto_translate_mode = 1
+layout_mode = 2
+
+[node name="Octave3" parent="VSplitContainer/HBoxContainer" instance=ExtResource("3_q7cxg")]
+auto_translate_mode = 1
+layout_mode = 2
+base_note_num = 72
+
+[node name="Octave4" parent="VSplitContainer/HBoxContainer" instance=ExtResource("3_q7cxg")]
+auto_translate_mode = 1
+layout_mode = 2
+base_note_num = 84
+
+[connection signal="value_changed" from="VSplitContainer/HSplitContainer/PanelContainer/CC/Volume" to="." method="_on_volume_value_changed"]
+[connection signal="value_changed" from="VSplitContainer/HSplitContainer/PanelContainer/CC/Chorus" to="." method="_on_chorus_value_changed"]
+[connection signal="value_changed" from="VSplitContainer/HSplitContainer/PanelContainer/CC/Cutoff" to="." method="_on_cutoff_value_changed"]
+[connection signal="value_changed" from="VSplitContainer/HSplitContainer/PanelContainer/CC/Reverb" to="." method="_on_reverb_value_changed"]
+[connection signal="toggled" from="VSplitContainer/HSplitContainer/LogPanel/VBoxContainer/LogToggle" to="VSplitContainer/HSplitContainer/LogPanel/VBoxContainer/MidiLog" method="toggle_logging"]
+
+[editable path="VSplitContainer/HSplitContainer/PanelContainer/CC/Volume"]
+[editable path="VSplitContainer/HSplitContainer/PanelContainer/CC/Chorus"]
+[editable path="VSplitContainer/HSplitContainer/PanelContainer/CC/Reverb"]

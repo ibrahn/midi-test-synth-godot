@@ -1,0 +1,24 @@
+[gd_resource type="AudioBusLayout" load_steps=4 format=3 uid="uid://idu7mwiygej4"]
+
+[sub_resource type="AudioEffectChorus" id="AudioEffectChorus_dirxk"]
+resource_name = "Chorus"
+wet = 0.0
+
+[sub_resource type="AudioEffectFilter" id="AudioEffectFilter_0kf7y"]
+resource_name = "Filter"
+cutoff_hz = 800.0
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_xw4n1"]
+resource_name = "Reverb"
+room_size = 0.4
+damping = 0.8
+wet = 0.0
+
+[resource]
+bus/0/volume_db = 0.265018
+bus/0/effect/0/effect = SubResource("AudioEffectChorus_dirxk")
+bus/0/effect/0/enabled = true
+bus/0/effect/1/effect = SubResource("AudioEffectFilter_0kf7y")
+bus/0/effect/1/enabled = true
+bus/0/effect/2/effect = SubResource("AudioEffectReverb_xw4n1")
+bus/0/effect/2/enabled = true
